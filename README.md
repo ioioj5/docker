@@ -37,3 +37,9 @@ $ yum install docker-io
 	```
 	$ docker run -name lnmp -v /data/www:/data/www -p 80:80 -it ioioj5/lnmp
 	```
+
+6. 退出后重新进入Docker镜像, 访问容器内部
+
+	```
+	$ docker exec -it [CONTAINER_NAME or CONTAINER_ID] /bin/bash
+	```
