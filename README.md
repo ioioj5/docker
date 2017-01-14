@@ -6,9 +6,10 @@
 
 ## 安装Docker
 
-	```
-	$ yum install docker-io
-	```
+```
+$ yum install docker-io
+```
+
 ## 使用Docker
 
 1. 创建Dockerfile
