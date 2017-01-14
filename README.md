@@ -35,5 +35,5 @@ $ yum install docker-io
 5. 运行Docker镜像
 
 	```
-	$ docker run -t -i ioioj5/lnmp /bin/bash
+	$ docker run -name lnmp -v /data/www:/data/www -p 80:80 -it ioioj5/lnmp
 	```
