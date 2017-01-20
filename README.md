@@ -43,3 +43,8 @@ $ yum install docker-io
 	```
 	$ docker exec -it [CONTAINER_NAME or CONTAINER_ID] /bin/bash
 	```
+
+
+# 文件说明
+
+Dockerfile_all_in_one: 整体打包lnmp开发环境
