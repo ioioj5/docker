@@ -22,10 +22,10 @@ $ yum install docker-io
 
 2. 编写Dockerfile
 
-3. 生成Docker镜像
+3. 生成Docker镜像, 指定Dockerfile
 
 	```
-	$ docker build ioioj5/lnmp
+	$ docker build -t ioioj5/nginx1.11.13 -f Dockerfile_nginx .
 	```
 4. 检查生成的Docker镜像
 
@@ -35,7 +35,13 @@ $ yum install docker-io
 5. 运行Docker镜像
 
 	```
-	$ docker run -name lnmp -v /data/www:/data/www -p 80:80 -it ioioj5/lnmp
+	$ docker run -name nginx1.11.13 -v /data/www:/data/www -p 80:80 -it ioioj5/nginx1.11.13
+	```
+
+两两容器的数据通信通过容器启动命令docker run加参数--link解决, --link参数的格式为  --link name:alias
+
+	```
+	$ docker run -name nginx1.11.13 -v /data/www:/data/www -p 80:80 -it ioioj5/nginx1.11.13 --link php5.6:php5.6
 	```
 
 6. 退出后重新进入Docker镜像, 访问容器内部
