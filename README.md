@@ -54,3 +54,6 @@ $ yum install docker-io
 # 文件说明
 
 Dockerfile_all_in_one: 整体打包lnmp开发环境
+Dockerfile_nginx : Nginx安装与配置
+Dockerfile_php: PHP安装与配置
+Dockerfile_mysql: MySQL安装与配置
