@@ -16,18 +16,18 @@ MAINTAINER ioioj5 peng_du2007@qq.com
 # - Commands Start - #
 
 # 1. set up EPEL repository
-RUN rpm -Uvh http://mirrors.kernel.org/fedora-epel/6/i386/epel-release-6-8.noarch.rpm
-RUN yum repolist
+#RUN rpm -Uvh http://mirrors.kernel.org/fedora-epel/6/i386/epel-release-6-8.noarch.rpm
+#RUN yum repolist
 
 # 2. update the image and install dependencies
 RUN yum -y install wget && wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
 RUN yum makecache
-RUN yum -y install gcc gcc-c++ gcc-g77 make libtool autoconf patch unzip automake libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl libmcrypt libmcrypt-devel libpng libpng-devel libjpeg-devel openssl openssl-devel curl curl-devel libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl autoconf automake libaio*i
+RUN yum -y install gcc gcc-c++ gcc-g77 make libtool autoconf patch unzip automake libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl libmcrypt libmcrypt-devel libpng libpng-devel libjpeg-devel openssl openssl-devel curl curl-devel libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl autoconf automake libaio*i pcre pcre-devel
 
 # 3. install Nginx
 RUN cd /tmp && wget http://nginx.org/download/nginx-1.11.13.tar.gz && \
 	tar -xzvf nginx-1.11.13.tar.gz && \
-	cd /tmp/nginx-1.11.13.tar.gz && \
+	cd /tmp/nginx-1.11.13 && \
 	./configure \
 	--prefix=/usr/local/nginx \
 	--with-http_ssl_module --with-http_sub_module --with-http_dav_module --with-http_flv_module \
@@ -38,8 +38,8 @@ RUN cd /tmp && wget http://nginx.org/download/nginx-1.11.13.tar.gz && \
 # 4. setting nginx conf
 
 # 5. start nginx
-ENTRYPOINT ["/etc/init.d/nginx", "start"]
-
+CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
+#CMD ["/usr/local/nginx/sbin/nginx"]
 # mount
 VOLUME ["/data/www"]
 
