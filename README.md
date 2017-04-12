@@ -35,7 +35,9 @@ $ yum install docker-io
 5. 运行Docker镜像
 
 	```
-	$ docker run -name nginx1.11.13 -v /data/www:/data/www -p 80:80 -it ioioj5/nginx1.11.13
+	$ sudo docker run --name mysql -p 3306:3306 -v /data/server/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -idt ioioj5/mysql
+	$ sudo docker run --name php -p 9000:9000 --link mysql:mysql -idt ioioj5/php
+	$ sudo docker run --name nginx -p 80:80 -v /data/www:/usr/local/nginx/html --link php:php -idt ioioj5/nginx
 	```
 
 	两两容器的数据通信通过容器启动命令docker run加参数--link解决, --link参数的格式为  --link name:alias
